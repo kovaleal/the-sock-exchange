@@ -14,4 +14,5 @@ jobs:
 
       - name: Echo to standard output
         run:
-echo "The dryer is a clear example of a UFO. It makes socks disappear into thin air."
+        echo "The dryer is a clear example of a UFO. It makes socks disappear into thin
+air."
