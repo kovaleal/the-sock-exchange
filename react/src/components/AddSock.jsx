@@ -47,6 +47,7 @@ const AddSock = (props) => {
                 throw new Error('Failed to add sock!');
             }
             
+            // REFRESH + PRINT SUCCESS
             //const updatedData = data.filter(sock => sock._id !== sockId);
             //setData(updatedData); // Update the state with the updated data
         }
