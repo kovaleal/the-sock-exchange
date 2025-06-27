@@ -1,7 +1,4 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -17,6 +14,9 @@ import Featured from "./components/Featured";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import Promo from "./components/Promo";
+import LoginForm from "./components/LoginForm";
+import RequireAuth from "./components/RequireAuth";
+import { AuthProvider } from "./hooks/AuthContext"
 
 import sock_data from './assets/sock.json';
 import promo_data from './assets/promo.json';
@@ -114,11 +114,18 @@ function App() {
             <div className="row">
               Both socks and space rockets 🚀 will take you to new heights, but only one will get cold feet!
               <Featured data={promo_data} />
+              <AuthProvider>
               <Routes>
                 <Route exact path="/" element={<Home data={data} handleDelete={handleDelete} />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/addsock" element={<AddSock />} />
+                <Route path="/addsock" element={
+                  <RequireAuth>
+                    <AddSock />
+                  </RequireAuth>
+                } />
+                <Route path="/Login" element={<LoginForm />} />
               </Routes>
+              </AuthProvider>
               <div className={envColor} style={{ textAlign: 'center', fontWeight: 'bold' }}>
                 <Footer environment={env} />
               </div>
